@@ -39,22 +39,22 @@ exports.getExpense = (req, res, next) => {
 
 exports.createExpense = (req, res, next) => {
   console.log(req.body);
-  // const expense = new Expense({
-  //   amount: req.body.amount,
-  //   category: req.body.category,
-  //   subCategory: req.body.subCategory,
-  //   expenseDescription: req.body.expenseDescription,
-  //   paymentMethod: req.body.paymentMethod
-  // });
-  // console.log(expense);
+  const expense = new Expense({
+    amount: req.body.amount,
+    category: req.body.category,
+    subCategory: req.body.subCategory,
+    expenseDescription: req.body.expenseDescription,
+    paymentMethod: req.body.paymentMethod
+  });
+  console.log(expense);
 
-  // expense.save().then(result => {
-  //   //result holds the createdExpense
-  //   res.status(201).json({
-  //     message: "Expense added successfully",
-  //     expenseId: result._id
-  //   });
-  // });
+  expense.save().then(result => {
+    //result holds the createdExpense
+    res.status(201).json({
+      message: "Expense added successfully",
+      expenseId: result._id
+    });
+  });
 };
 
 exports.updateExpense = (req, res, next) => {

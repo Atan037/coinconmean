@@ -20,24 +20,23 @@ const apiUrl = 'http://localhost:3000/api/expenses';
 })
 export class ExpenseService {
   form: FormGroup = new FormGroup({
-    $key: new FormControl(null),
+    // $key: new FormControl(null),
     amount: new FormControl('', Validators.required),
-    expenseDescription: new FormControl(''),
     category: new FormControl(''),
     subCategory: new FormControl(''),
+    expenseDescription: new FormControl(''),
     paymentMethod: new FormControl(''),
-    timestamp: new FormControl(Date.now())
+    // timestamp: new FormControl(Date.now())
   });
 
   initializeFormGroup() {
     this.form.setValue({
-      $key: null,
+      // $key: null,
       amount: '',
-      expenseDescription: '',
       category: '',
       subCategory: '',
+      expenseDescription: '',
       paymentMethod: '',
-      timestamp: Date.now()
     });
   }
 
@@ -60,7 +59,6 @@ export class ExpenseService {
 
   getExpenses(): Observable<any> {
     return this.http.get(apiUrl, httpOptions).pipe(
-      // map(this.extractData),
       catchError(this.handleError)
     );
   }
@@ -70,13 +68,19 @@ export class ExpenseService {
     return this.http.get(url, httpOptions).pipe(catchError(this.handleError));
   }
 
+/** POST: add a new hero to the database */
+// addHero (hero: Hero): Observable<Hero> {
+//   return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
+//     .pipe(
+//       catchError(this.handleError('addHero', hero))
+//     );
+// }
+
   postExpenses(data): Observable<any> {
     console.log(data);
-    return this.http
-      .post(apiUrl, data, httpOptions)
+    return this.http.post(apiUrl, data, httpOptions)
       .pipe(catchError(this.handleError));
   }
-
 
   updateExpense(data): Observable<any> {
     return this.http

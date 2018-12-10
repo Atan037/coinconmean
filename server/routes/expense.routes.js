@@ -4,10 +4,10 @@ const cors = require("cors");
 
 const router = express.Router();
 
-router.get("/expenses", cors(), expenseController.getExpenses);
-router.get("/expenses/:id", cors(), expenseController.getExpense);
-router.post("/expenses", cors(), expenseController.createExpense);
-router.put("/expenses/:id", cors(), expenseController.updateExpense);
-router.delete("/expenses/:id", cors(), expenseController.deleteExpense);
+router.get("/expenses", expenseController.getExpenses);
+router.get("/expenses/:id", expenseController.getExpense);
+router.post("/expenses", expenseController.createExpense);
+router.put("/expenses/:id", expenseController.updateExpense);
+router.delete("/expenses/:id", expenseController.deleteExpense);
 
 module.exports = router;

@@ -1,0 +1,17 @@
+button {
+  margin-top: 10px;
+  max-width: 120px;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  max-width: 100%;
+}
+.marginRight {
+  margin-right: 30px;
+}
+

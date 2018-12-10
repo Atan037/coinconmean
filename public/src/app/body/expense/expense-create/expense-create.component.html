@@ -1,0 +1,65 @@
+<form [formGroup]="expenseService.form" (submit)="onSubmit()">
+  <div class="example-container">
+    <mat-form-field>
+      <input formControlName="amount" matInput type="number" placeholder="€" />
+      <mat-error>Expense amount is missing</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea
+        formControlName="expenseDescription"
+        matInput
+        placeholder="Describtion"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select formControlName="category" placeholder="Category">
+        <mat-option
+          *ngFor="let category of categoryService.categories; let i = index"
+          value="{{ category.name }}"
+          (click)="selectedI(i)"
+          ngDefaultControl>
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="categorySelected">
+      <mat-select formControlName="subCategory" placeholder="Sub-Category">
+        <mat-option
+          *ngFor="let subCategory of categoryService.categories[selectedCategoryIndex].subCategory; let i = index"
+          value="{{ subCategory }}"
+          ngDefaultControl>
+          {{ subCategory }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <section class="example-section">
+      <label class="example-margin">Payment method:</label> <br />
+
+      <mat-radio-group formControlName="paymentMethod">
+        <mat-radio-button
+          class="example-margin marginRight"
+          color="primary"
+          value="cash"
+        >
+          Cash
+        </mat-radio-button>
+
+        <mat-radio-button class="example-margin" value="card" color="primary">
+          Bank Card
+        </mat-radio-button>
+      </mat-radio-group>
+    </section>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="expenseService.form.invalid"
+    >
+      ADD EXPENSE
+    </button>
+  </div>
+</form>

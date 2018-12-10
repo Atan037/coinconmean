@@ -1,0 +1,12 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let expense of expenses">
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ expense.amount }} </mat-panel-title>
+      <mat-panel-description> {{ expense.category }} </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Sub-Category: {{ expense.subCategory }}</p>
+    <p>Description: {{ expense.expenseDescription }}</p>
+    <p>Payment Method: {{ expense.paymentMethod }}</p>
+    <p>Date: {{ expense.timestamp }}</p>
+  </mat-expansion-panel>
+</mat-accordion>
